@@ -1,0 +1,52 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkly — URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="/">linkly<span>.</span></a>
+        <span class="tagline">Short links. Big possibilities.</span>
+    </header>
+
+    <main class="hero">
+        <div class="pill"><span class="dot"></span> SIMPLE. FAST. FREE.</div>
+
+        <h1>Make your links<br><span>shorter & smarter.</span></h1>
+
+        <p class="subtitle">
+            Turn long, messy URLs into clean links that are easy to share.
+        </p>
+
+        <section class="shortener-card">
+            <label for="url">Paste your long URL here</label>
+            <form action="/shorten" method="POST">
+                <div class="input-row">
+                    <span class="link-icon">↗</span>
+                    <input
+                        type="url"
+                        id="url"
+                        name="url"
+                        placeholder="https://example.com/your-very-long-link"
+                        required
+                    >
+                </div>
+                <button type="submit">Shorten URL <span>→</span></button>
+            </form>
+            <p class="hint">No complicated setup. Just paste and shorten.</p>
+        </section>
+
+        <div class="features">
+            <div><span>✦</span> Easy to share</div>
+            <div><span>↗</span> Quick redirects</div>
+            <div><span>✓</span> Simple and reliable</div>
+        </div>
+    </main>
+
+    <footer>Built with Flask <span>•</span> Your links, simplified.</footer>
+</body>
+</html>

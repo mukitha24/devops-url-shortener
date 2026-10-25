@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Short Link — Linkly</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="/">linkly<span>.</span></a>
+        <span class="tagline">Your link is ready</span>
+    </header>
+
+    <main class="hero">
+        <div class="pill"><span class="dot"></span> SUCCESS</div>
+        <h1>Your link is<br><span>ready to share.</span></h1>
+
+        <section class="shortener-card">
+            <label>Your shortened URL</label>
+            <div class="input-row">
+                <input id="shortUrl" type="text" value="{{ short_url }}" readonly>
+            </div>
+            <button type="button" onclick="copyLink()">Copy short link ↗</button>
+
+            <p class="hint" id="copyStatus">Original URL: {{ original_url }}</p>
+        </section>
+
+        <div class="features">
+            <div><span>✓</span> Ready to share</div>
+            <div><span>↗</span> Redirect enabled</div>
+        </div>
+    </main>
+
+    <footer>Built with Flask <span>•</span> Your links, simplified.</footer>
+
+    <script>
+        function copyLink() {
+            const input = document.getElementById("shortUrl");
+            navigator.clipboard.writeText(input.value)
+                .then(() => {
+                    document.getElementById("copyStatus").textContent =
+                        "Copied! Your short link is ready to share.";
+                })
+                .catch(() => {
+                    input.select();
+                    document.getElementById("copyStatus").textContent =
+                        "Select and copy the link above.";
+                });
+        }
+    </script>
+</body>
+</html>
